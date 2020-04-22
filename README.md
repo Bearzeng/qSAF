@@ -17,7 +17,7 @@ It is only suitable for LAS format point cloud file.
 
 #### Get source CloudCompare including qSAF
 
-    git clone --recursive https://github.com/Bearzeng/trunk.git
+    git clone --recursive https://github.com/Bearzeng/CloudCompare.git
 
 
 qSAF will be located at plugins/3rdParty/qSAF when done.
