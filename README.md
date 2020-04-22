@@ -12,13 +12,10 @@ It is only suitable for LAS format point cloud file.
 [CloudCompare](https://github.com/Bearzeng/CloudCompare)
  is an open source 3D point cloud and grid processing software that can handle all kinds of point cloud format data.
 
-## CloudCompare-Qt
-
-[CloudCompare-Qt](https://github.com/huihut/CloudCompare-Qt) is a third-party Qt project built on the source code of CloudCompare. It only needs Qt to compile and run witout Visual Studio, and support Windows, MacOS, and Linux.
 
 ## Use qSAF in CloudCompare
 
-#### Put qSAF to CloudCompare
+#### Get source CloudCompare including qSAF
 
     git clone --recursive https://github.com/Bearzeng/trunk.git
 
