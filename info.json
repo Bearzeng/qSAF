@@ -1,0 +1,24 @@
+{
+	"type" : "Standard",
+        "name" : "SAF",
+        "icon" : ":/CC/plugin/qSAF/icon.png",
+        "description": "Filter the scanning angle in a range of points",
+	"authors" : [
+		{
+                        "name" : "HuiHut",
+                        "email" : "huihut@outlook.com"
+		}
+	],
+        "maintainers" : [
+                {
+                        "name" : "Xianfeng Zeng",
+                        "email" : "302478@qq.com"
+                }
+        ],
+        "references" : [
+                {
+                        "text" : "",
+                        "url" : ""
+                }
+        ]
+}

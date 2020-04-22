@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>316</width>
+    <width>339</width>
     <height>203</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>339</width>
+    <height>203</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>339</width>
+    <height>203</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Scan Angle Filter</string>
@@ -16,7 +28,7 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>50</x>
      <y>150</y>
      <width>261</width>
      <height>32</height>
@@ -32,9 +44,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>20</y>
-     <width>111</width>
+     <width>121</width>
      <height>16</height>
     </rect>
    </property>
@@ -47,7 +59,7 @@
     <rect>
      <x>20</x>
      <y>50</y>
-     <width>291</width>
+     <width>311</width>
      <height>20</height>
     </rect>
    </property>
@@ -58,7 +70,7 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>60</x>
      <y>100</y>
      <width>41</width>
      <height>16</height>
@@ -71,14 +83,14 @@
   <widget class="QDoubleSpinBox" name="doubleSpinBox_1">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>100</x>
      <y>100</y>
      <width>81</width>
      <height>21</height>
     </rect>
    </property>
    <property name="maximum">
-    <double>90.000000000000000</double>
+    <double>180.000000000000000</double>
    </property>
    <property name="value">
     <double>20.000000000000000</double>
@@ -87,14 +99,14 @@
   <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>210</x>
      <y>100</y>
      <width>71</width>
      <height>21</height>
     </rect>
    </property>
    <property name="maximum">
-    <double>90.000000000000000</double>
+    <double>180.000000000000000</double>
    </property>
    <property name="value">
     <double>70.000000000000000</double>
@@ -103,7 +115,7 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>190</x>
      <y>100</y>
      <width>16</width>
      <height>16</height>

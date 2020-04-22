@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
 
-option( INSTALL_QSAF_PLUGIN "Check to install qSAF plugin" OFF )
+option( PLUGIN_STANDARD_QSAF "Check to install qSAF plugin" OFF )
 
-if (INSTALL_QSAF_PLUGIN)
+if (PLUGIN_STANDARD_QSAF)
 
     #CloudCompare ‘SAF’ plugin
 
     project( QSAF_PLUGIN )
     
-    include( ../CMakePluginTpl.cmake )
+    include( ../../CMakePluginTpl.cmake )
     
 endif()

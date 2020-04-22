@@ -42,8 +42,9 @@
 #include <ScalarField.h>
 
 qSAF::qSAF(QObject* parent/*=0*/)
-	: QObject(parent)
-	, m_action(0)
+    : QObject(parent)
+    , ccStdPluginInterface( ":/CC/plugin/qSAF/info.json" )
+    , m_action(nullptr)
 {
 }
 
@@ -53,27 +54,27 @@ void qSAF::onNewSelection(const ccHObject::Container& selectedEntities)
         m_action->setEnabled(selectedEntities.size()==1 && selectedEntities[0]->isA(CC_TYPES::POINT_CLOUD));
 }
 
-void qSAF::getActions(QActionGroup& group)
+QList<QAction *> qSAF::getActions()
 {
     if (!m_action)
     {
-		m_action = new QAction(getName(),this);
-		m_action->setToolTip(getDescription());
-		m_action->setIcon(getIcon());
-		//connect appropriate signal
-		connect(m_action, SIGNAL(triggered()), this, SLOT(doAction()));
-	}
+        m_action = new QAction(getName(),this);
+        m_action->setToolTip(getDescription());
+        m_action->setIcon(getIcon());
+        //connect appropriate signal
+        connect(m_action, SIGNAL(triggered()), this, SLOT(doAction()));
+    }
 
-	group.addAction(m_action);
+    return {m_action};
 }
 
 void qSAF::doAction()
 {
-	//m_app should have already been initialized by CC when plugin is loaded!
-	//(--> pure internal check)
-	assert(m_app);
-	if (!m_app)
-		return;
+    //m_app should have already been initialized by CC when plugin is loaded!
+    //(--> pure internal check)
+    assert(m_app);
+    if (!m_app)
+        return;
 
     const ccHObject::Container& selectedEntities = m_app->getSelectedEntities();
     size_t selNum = selectedEntities.size();
@@ -122,7 +123,7 @@ void qSAF::doAction()
     QProgressDialog pDlg;
     pDlg.setWindowTitle("SAF");
     pDlg.setLabelText(QString("Scan Angle Filter\nfrom %1 to %2").arg(threshold_1).arg(threshold_2));
-    //pDlg.setRange(0, count);
+    pDlg.setRange(0, count);
     pDlg.setCancelButton(0);
     pDlg.show();
     QApplication::processEvents();
@@ -142,8 +143,15 @@ void qSAF::doAction()
         threshold_2 = threshold_temp;
     }
 
+    //[进度条]进度条的取消SAF按钮
+    bool wasCancelled = false;
+
     //Index of Scan Angle Rank
-    int scanAngleSFIndex = pc->getScalarFieldIndexByName("Scan Angle Rank");
+    int scanAngleSFIndex = pc->getScalarFieldIndexByName("ScanAngleRank");
+    if (scanAngleSFIndex < 0) {
+        m_app->dispToConsole("[SAF] Failed to find \"ScanAngleRank\" on the selected entity.", ccMainAppInterface::ERR_CONSOLE_MESSAGE);
+        return;
+    }
 
     for(unsigned i = 0; i < count; ++i)
     {
@@ -160,6 +168,17 @@ void qSAF::doAction()
         if(threshold_1 <= scanAngle && scanAngle <= threshold_2)
         {
             rangeAnglerc.addPointIndex(i);
+        }
+
+        //[进度条]重置进度条
+        pDlg.setValue(i);
+        QCoreApplication::processEvents();
+
+        //[进度条]取消SAF处理
+        if (pDlg.wasCanceled())
+        {
+            wasCancelled = true;
+            break;
         }
     }
 
@@ -181,6 +200,13 @@ void qSAF::doAction()
     pDlg.close();
     QApplication::processEvents();
 
+    //[进度条]取消SAF
+    if (wasCancelled)
+    {
+        m_app->dispToConsole("[SAF] SAF was cancelled", ccMainAppInterface::STD_CONSOLE_MESSAGE);
+        return;
+    }
+
     //hide the original cloud
     pc->setEnabled(false);
 
@@ -198,9 +224,4 @@ void qSAF::doAction()
     //refresh
     m_app->refreshAll();
 
-}
-
-QIcon qSAF::getIcon() const
-{
-	return QIcon(":/CC/plugin/qSAF/icon.png");
 }

@@ -19,7 +19,7 @@
 #define Q_SAF_PLUGIN_HEADER
 
 //qCC
-#include "../ccStdPluginInterface.h"
+#include "ccStdPluginInterface.h"
 
 //! qSAF plugin
 /**
@@ -29,21 +29,17 @@ class qSAF : public QObject, public ccStdPluginInterface
 {
 	Q_OBJECT
     Q_INTERFACES(ccStdPluginInterface)
-	Q_PLUGIN_METADATA(IID "cccorp.cloudcompare.plugin.qSAF")
+    Q_PLUGIN_METADATA(IID "cccorp.cloudcompare.plugin.qSAF" FILE "info.json")
 
 public:
 
 	//! Default constructor
-	explicit qSAF(QObject* parent = 0);
-
-	//inherited from ccPluginInterface
-    virtual QString getName() const override { return "SAF"; }
-    virtual QString getDescription() const override { return "Filter the scanning angle in a range of points"; }
-	virtual QIcon getIcon() const override;
+    explicit qSAF(QObject* parent = nullptr);
+    ~qSAF() override = default;
 
 	//inherited from ccStdPluginInterface
 	void onNewSelection(const ccHObject::Container& selectedEntities) override;
-	virtual void getActions(QActionGroup& group) override;
+    QList<QAction *> getActions() override;
 
 protected slots:
 

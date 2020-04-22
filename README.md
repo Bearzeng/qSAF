@@ -1,3 +1,6 @@
+
+Fork from https://github.com/huihut/qSAF, and ported to the latest CloudCompare
+
 # qSAF
 
 qSAF(Scan Angle Filter) is a simple CloudCompare plugin that can filter a given range of scanning angles.
@@ -6,7 +9,7 @@ It is only suitable for LAS format point cloud file.
 
 ## CloudCompare
 
-[CloudCompare](https://github.com/CloudCompare/CloudCompare)
+[CloudCompare](https://github.com/Bearzeng/CloudCompare)
  is an open source 3D point cloud and grid processing software that can handle all kinds of point cloud format data.
 
 ## CloudCompare-Qt
@@ -17,23 +20,20 @@ It is only suitable for LAS format point cloud file.
 
 #### Put qSAF to CloudCompare
 
-    mkdir CloudCompare
-    cd CloudCompare
-    git clone --recursive https://github.com/cloudcompare/trunk.git
-    git clone https://github.com/huihut/qSAF.git trunk/plugins/qSAF
-    rm -rf trunk/plugins/qSAF/.git
+    git clone --recursive https://github.com/Bearzeng/trunk.git
+
+
+qSAF will be located at plugins/3rdParty/qSAF when done.
+
 
 #### Generate / Run
 
-[Generating CloudCompare project](https://github.com/CloudCompare/CloudCompare/blob/master/BUILD.md#generating-the-project)
+[Generating CloudCompare project](https://github.com/Bearzeng/CloudCompare/blob/master/BUILD.md#generating-the-project)
 
-## Use qSAF in CloudCompare-Qt
-
-[CloudCompare-Qt](https://github.com/huihut/CloudCompare-Qt)
 
 ## Tutorial
 
-Tutorial on how to write a CloudCompare plugin.
+Tutorial on how to write a CloudCompare plugin. (For previor version 2.8, the source code already ported to the latest version of CC)
 
 1. [CloudCompare插件编写一（插件框架）](http://blog.huihut.com/2017/04/27/CloudCompareSAFPlugin_1_Framework/)
 2. [CloudCompare插件编写二（数据结构）](http://blog.huihut.com/2017/04/27/CloudCompareSAFPlugin_2_DataStructure/)
