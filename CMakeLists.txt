@@ -7,7 +7,17 @@ if (PLUGIN_STANDARD_QSAF)
     #CloudCompare ‘SAF’ plugin
 
     project( QSAF_PLUGIN )
-    
-    include( CMakePluginTemplate )
+    AddPlugin( NAME ${PROJECT_NAME} )
+
+    #include( CMakePluginTemplate )
+
+    target_sources( ${PROJECT_NAME}
+            PRIVATE
+                    ${CMAKE_CURRENT_LIST_DIR}/qSAF.h
+                    ${CMAKE_CURRENT_LIST_DIR}/qSAF.cpp
+                    ${CMAKE_CURRENT_LIST_DIR}/SAFDlg.ui
+                    ${CMAKE_CURRENT_LIST_DIR}/ccSAFDlg.h
+                    ${CMAKE_CURRENT_LIST_DIR}/ccSAFDlg.cpp
+    )
     
 endif()
