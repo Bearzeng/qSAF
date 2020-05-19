@@ -8,6 +8,6 @@ if (PLUGIN_STANDARD_QSAF)
 
     project( QSAF_PLUGIN )
     
-    include( ../../CMakePluginTpl.cmake )
+    include( CMakePluginTemplate )
     
 endif()

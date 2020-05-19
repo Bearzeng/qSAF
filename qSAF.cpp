@@ -133,7 +133,7 @@ void qSAF::doAction()
 
     ScalarType scanAngle;
 
-    CCLib::ReferenceCloud rangeAnglerc(pc);
+    CCCoreLib::ReferenceCloud rangeAnglerc(pc);
 
     //To ensure that threshold_1 is less than threshold_2
     if(threshold_1 > threshold_2)
