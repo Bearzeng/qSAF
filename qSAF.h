@@ -27,27 +27,27 @@
 **/
 class qSAF : public QObject, public ccStdPluginInterface
 {
-	Q_OBJECT
-    Q_INTERFACES(ccStdPluginInterface)
+    Q_OBJECT
+    Q_INTERFACES( ccPluginInterface ccStdPluginInterface )
     Q_PLUGIN_METADATA(IID "cccorp.cloudcompare.plugin.qSAF" FILE "info.json")
 
 public:
 
-	//! Default constructor
+    //! Default constructor
     explicit qSAF(QObject* parent = nullptr);
     ~qSAF() override = default;
 
-	//inherited from ccStdPluginInterface
-	void onNewSelection(const ccHObject::Container& selectedEntities) override;
+    //inherited from ccStdPluginInterface
+    void onNewSelection(const ccHObject::Container& selectedEntities) override;
     QList<QAction *> getActions() override;
 
 protected slots:
 
-	void doAction();
+    void doAction();
 
 protected:
 
-	QAction* m_action;
+    QAction* m_action;
 };
 
 #endif
